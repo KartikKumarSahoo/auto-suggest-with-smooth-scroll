@@ -1,33 +1,99 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+main {
+  display: flex;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-wrapper {
+  position: relative;
+
+  box-shadow: 0px 1px 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+input:focus{
+  outline: none;
+}
+
+#search-input {
+  padding: 10px 30px;
+  width: 300px;
+  border: none;
+  user-select: none;
+}
+
+.icon-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.icon-search {
+  background: url(https://img.icons8.com/material/24/000000/search.png) no-repeat;
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+  transform: scale(0.8)
+}
+
+.no-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border: 1px solid #eee;
+  color: red;
+}
+
+.match-dialog {
+  max-height: 200px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.item-wrapper {
+  font-size: 12px;
+  padding: 15px;
+  border: 1px solid #eee;
+}
+
+.item-wrapper.active {
+  background-color: antiquewhite;
+}
+
+.item-wrapper .name {
+  font-style: italic;
+  font-size: 14px;
+}
+
+.item-wrapper .id {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.item-wrapper .addr {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.item-wrapper .highlight {
+  color: blue;
 }
