@@ -1,11 +1,3 @@
-export const debounce = (fn, ms = 0) => {
-  let timeoutId;
-  return function(...args) {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => fn.apply(this, args), ms);
-  };
-};
-
 export const scrollIntoView = (containerEle, targetEle) => {
   const {
     top: contTop,
@@ -33,7 +25,7 @@ export const scrollIntoView = (containerEle, targetEle) => {
   }
 };
 
-export const smoothScroll = (scrollEle, position) => {
+const smoothScroll = (scrollEle, position) => {
   if ('scrollBehavior' in document.body.style) {
     scrollEle.scrollTo({
       top: position,
@@ -46,11 +38,7 @@ export const smoothScroll = (scrollEle, position) => {
   customSmoothScroll(scrollEle, position);
 };
 
-export const customSmoothScroll = (
-  scrollEle,
-  position,
-  animationDuration = 250,
-) => {
+const customSmoothScroll = (scrollEle, position, animationDuration = 250) => {
   let startTime;
   const contScrollTop = scrollEle.scrollTop;
   const distance = Math.abs(contScrollTop - position); // Distance to travel.
