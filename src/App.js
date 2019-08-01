@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import AutoSuggestDialog from './AutoSuggestDialog';
 import './App.css';
-import { scrollIntoView } from './utils';
 
 function App() {
   const [searchText, setSearchText] = useState('');
@@ -18,21 +18,6 @@ function App() {
         console.log(JSON.stringify(jsonRes));
       });
   }, []);
-
-  useEffect(() => {
-    const activeItem = document.querySelector('.item-wrapper.active');
-    if (!activeItem) return;
-
-    if ('scrollIntoView' in document.body) {
-      activeItem.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-      });
-    } else {
-      const scrollEle = document.querySelector('.match-dialog');
-      scrollIntoView(scrollEle, activeItem);
-    }
-  }, [highlightedIndex]);
 
   const resetStates = () => {
     setSearchText('');
@@ -63,14 +48,6 @@ function App() {
       }),
     );
   };
-
-  const shouldShowNoUser = () => searchText && result.length === 0;
-
-  const generateSearchedMarkup = text => ({
-    __html: text.includes(searchText)
-      ? text.replace(searchText, `<span class="highlight">${searchText}</span>`)
-      : text,
-  });
 
   const onKeyPress = e => {
     // UP ARROW Key
@@ -118,41 +95,13 @@ function App() {
             </div>
           )}
 
-          <div className="match-dialog">
-            {result.map((item, index) => {
-              const { id, name, address, pincode } = item || {};
-              return (
-                <div
-                  className={`item-wrapper ${
-                    highlightedIndex === index ? 'active' : ''
-                  }`}
-                  key={item.name}
-                  onMouseOver={() => onHover(index)}
-                  onClick={onItemClick}
-                >
-                  <div
-                    className="id"
-                    dangerouslySetInnerHTML={generateSearchedMarkup(id)}
-                  />
-                  <div
-                    className="name"
-                    dangerouslySetInnerHTML={generateSearchedMarkup(name)}
-                  />
-                  <div
-                    className="addr"
-                    dangerouslySetInnerHTML={generateSearchedMarkup(address)}
-                  />
-                  <div
-                    className="pincode"
-                    dangerouslySetInnerHTML={generateSearchedMarkup(pincode)}
-                  />
-                </div>
-              );
-            })}
-            {shouldShowNoUser() && (
-              <div className="no-results">No User Found</div>
-            )}
-          </div>
+          <AutoSuggestDialog
+            searchQuery={searchText}
+            items={result}
+            activeIndex={highlightedIndex}
+            onItemClick={onItemClick}
+            onHover={onHover}
+          />
         </div>
       </main>
     </div>
