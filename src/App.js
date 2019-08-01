@@ -84,7 +84,7 @@ function App() {
 
     // ENTER Key
     if (e.keyCode === 13) {
-      this.onItemClick(result[highlightedIndex], e);
+      onItemClick(e);
     }
   };
 
@@ -94,7 +94,7 @@ function App() {
     e.stopPropagation();
     e.preventDefault();
 
-    alert(highlightedIndex);
+    alert(`Selected User Name is ${result[highlightedIndex].name}`);
   };
 
   return (
