@@ -1,4 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Problem Statment:
+You have to make a search input box which will search over a list of users.
+
+The user object has the following fields
+- id: a unique id
+- name: user’s name
+- items: list of items ordered by user
+- address: address of the user
+- pincode: user address pin code
+
+You have to implement search on all of the fields. The search results will show up as a list of User Cards. Refer to the screenshots for how the UI would look like
+
+Placeholder (empty input)
+
+Search Result List (https://lh6.googleusercontent.com/MDj1Wix-wc8ptBVbU0DE26utmJ6qfDz-K3lRxr1TTxSD1sfI4wf6qSM_LQ9GDvHEGHZ8AoOa1J3GScXPOZ3tpnpSzjq9tNl3g4sBTMQ-J0L4ca_4t6fCp8y3T21ZFMDDpKUy9UCr)
+
+No Results Card (https://lh5.googleusercontent.com/_0kHIwIK4Nx3FXFm8DkyC9vHdkuWw0Tgzkc3yz-wofVORSNOKavl_3G3vEmPvJiNE4idjAMMyyAzJBK1hVT3ROlH1_oubRR4T0iCAlTYQAyR9tOEHw50hxqiUTg7TkMlt1O6x-OV)
+
+
+### To Summarize
+- On typing in the search input box, the search results list opens up. The search could be just a string matching search.
+- The list of cards can be navigated through keyboard or mouse
+- only one card should highlight at a time if both mouse and keyboard are used for navigation
+- (keyboard will take preference if mouse is kept hovered on the list, similarly mouse will take preference if keyboard navigation is not used).
+- This behaviour is similar to how youtube search works (http://jmp.sh/5SoeFsY)
+- When no search results are found, an empty card is displayed
+- The card list would be scrollable
+- The highlighted card (via keyboard/mouse) will scroll into view
+
 
 ## Available Scripts
 
